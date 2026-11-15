@@ -1,5 +1,7 @@
 
 # Implementacao usando apenas a biblioteca padrao do Python
+# Nota-se que as bibliotecas não aplicam a solução diretamente, mas são usadas para auxiliar em algumas operações,
+# como manipulação de strings e cálculos.
 
 import math
 import re
@@ -16,7 +18,7 @@ DOCUMENTOS = [
     "A maca e uma fruta usada em tortas e sobremesas.",
     "A manga da camisa esta rasgada na costura.",
     "A manga comprida protege o braco do frio.",
-    "A camisa possui manga curta e gola redonda.",
+    "A camiseta possui manga curta e gola redonda.",
     "A costureira ajustou a manga do vestido.",
     "O suco de manga e uma bebida feita com fruta fresca.",
     "A fruta manga amadurece em regioes de clima quente.",
@@ -24,8 +26,12 @@ DOCUMENTOS = [
     "A blusa de manga longa e adequada para o inverno.",
     "A costura da manga da jaqueta precisa de reparo.",
     "A camisa social tem mangas compridas e punhos.",
+    "O suco de manga gelado é excelente para os dias quentes de verão.",
+    "Comprei uma camiseta nova de manga curta para passear no parque.",
+    "A receita do bolo de frutas leva pedaços de banana e maçã.",
+    "Gosto de comer manga com iogurte natural no café da manhã.",
+    "A costureira recomendou ajustar a manga da camiseta para que ficasse perfeita."
 ]
-
 
 # 2. PRE-PROCESSAMENTO DOS TEXTOS
 # Normaliza acentos, transforma em minusculas e remove palavras
@@ -39,7 +45,6 @@ STOPWORDS = {
     "foi", "pode", "ser", "se", "sua", "seu"
 }
 
-
 def remover_acentos(texto):
     """Retira acentos para padronizar palavras."""
     texto_normalizado = unicodedata.normalize("NFD", texto)
@@ -47,7 +52,6 @@ def remover_acentos(texto):
         caractere for caractere in texto_normalizado
         if unicodedata.category(caractere) != "Mn"
     )
-
 
 def tokenizar(texto):
     """Converte o texto em uma lista de palavras relevantes."""
@@ -126,7 +130,6 @@ def similaridade_cosseno(vetor_a, vetor_b):
         return 0.0
 
     return produto_interno(vetor_a, vetor_b) / (norma_a * norma_b)
-
 
 
 # 5. AUTOVALORES E AUTOVETORES PELO METODO DE JACOBI
